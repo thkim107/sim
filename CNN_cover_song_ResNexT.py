@@ -16,7 +16,7 @@ path_train_simmtx = '/home/sungkyun/Data/KAKAO_ALL_PAIR_TRAIN_30K/'
 path_val_simmtx = '/home/sungkyun/Data/KAKAO_ALL_PAIR_VAL/'
 path_eval_simmtx = '/home/sungkyun/Data/KAKAO_ALL_PAIR_EVAL/'
 
-# ResNexT paeameters
+# ResNexT parameters
 cardinality = 32
 
 #%% read paired list from h5 file
@@ -76,11 +76,7 @@ sc_factor = [np.mean(X), np.std(X)]
 
 X = (X - sc_factor[0]) / sc_factor[1]
 Xval = (Xval-sc_factor[0]) / sc_factor[1]
-#%% ResNexT
-
-def myprint(s):
-    with open('modelsummary.txt','w+') as f:
-        print(s, file=f)
+#%% ResNexT: code based on https://blog.waya.ai/deep-residual-learning-9610bb62c355
 
 
 def residual_network(x):
